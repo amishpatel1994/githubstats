@@ -18,6 +18,10 @@ config :githubstats, GithubstatsWeb.Endpoint,
   pubsub: [name: Githubstats.PubSub, adapter: Phoenix.PubSub.PG2],
   live_view: [signing_salt: "K6siXOov"]
 
+config :githubstats, :github,
+  url: System.get_env("GITHUB_URL"),
+  api_key: System.get_env("GITHUB_API_KEY")
+
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",
