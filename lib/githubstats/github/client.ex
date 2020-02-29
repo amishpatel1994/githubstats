@@ -9,5 +9,8 @@ defmodule Githubstats.Github.Client do
   	request_params: keyword
   }
 
-  @callback get_watched_repos(String.t()) :: {:ok, _} | {:error, http_response}
+  # TODO: We should replace this with pagination in future
+  @callback get_num_watches(String.t()) :: {:ok, integer} | {:error, http_response}
+
+  @callback get_watched_repos(String.t()) :: {:ok, %{}} | {:error, http_response}
 end
