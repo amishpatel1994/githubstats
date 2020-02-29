@@ -12,5 +12,5 @@ defmodule Githubstats.Github.Client do
   # TODO: We should replace this with pagination in future
   @callback get_num_watches(String.t()) :: {:ok, integer} | {:error, http_response}
 
-  @callback get_watched_repos(String.t()) :: {:ok, %{}} | {:error, http_response}
+  @callback get_watched_repos(String.t(), integer) :: {:ok, %{}} | {:error, http_response}
 end

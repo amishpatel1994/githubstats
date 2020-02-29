@@ -79,7 +79,18 @@ defmodule Githubstats.Github.HTTPClient do
 
     case post(%{query: query}) do
       %{status_code: 200, body: body} ->
-        Poison.decode!(body)
+        case Poison.decode!(body) do
+          %{"data" => %{"user" => %{"avatarUrl" => image_url, "watching" => %{"nodes" => watches}}}} ->
+            {:ok, %{"watches" => watches, "image_url" => image_url}}
+
+          %{"errors" => errors} ->
+            Logger.error(
+              "#{__MODULE__}.get_watched_repos.error " <>
+                "body=#{inspect(errors)}"
+            )
+
+            {:error, errors}
+        end
 
       %{status_code: status_code, body: body} ->
         Logger.error(
