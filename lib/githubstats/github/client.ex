@@ -4,10 +4,10 @@ defmodule Githubstats.Github.Client do
   """
 
   @type http_response :: %{
-  	status_code: integer,
-  	body: term,
-  	request_params: keyword
-  }
+          status_code: integer,
+          body: term,
+          request_params: keyword
+        }
 
   # TODO: We should replace this with pagination in future
   @callback get_num_watches(String.t()) :: {:ok, integer} | {:error, http_response}
