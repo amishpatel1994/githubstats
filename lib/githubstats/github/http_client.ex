@@ -19,7 +19,6 @@ defmodule Githubstats.Github.HTTPClient do
   @get_watched_repos ~s"""
     query getWatches { 
       user(login: "USERNAME"){
-        avatarUrl
         watching(last: NUM_WATCHES) {
           totalCount
           totalDiskUsage
@@ -82,10 +81,10 @@ defmodule Githubstats.Github.HTTPClient do
         case Poison.decode!(body) do
           %{
             "data" => %{
-              "user" => %{"avatarUrl" => image_url, "watching" => %{"nodes" => watches}}
+              "user" => %{"watching" => %{"nodes" => watches}}
             }
           } ->
-            {:ok, %{"watches" => watches, "image_url" => image_url}}
+            {:ok, %{"watches" => watches}}
 
           %{"errors" => errors} ->
             Logger.error(

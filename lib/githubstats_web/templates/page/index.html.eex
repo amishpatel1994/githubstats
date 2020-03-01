@@ -12,6 +12,8 @@
   <%end%>
 </section>
 
+<h1> They are keeping an eye on <%= @count %> repositories: </h1>
+
 <%= if @watches do %>
   <%= for watching <- @watches do %>
     <section class="row">
@@ -30,6 +32,9 @@
             Owner: <%= watching["owner"]["login"] %>
           </li><li>
             Primary Programming Language: <%= watching["primaryLanguage"]["name"] %>
+          </li>
+          <li>
+            Url: <a href="<%= watching["url"] %>"><%= watching["url"] %></a>
           </li>
         </ul>
       </article>
