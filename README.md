@@ -1,11 +1,16 @@
 # Githubstats
 
-To start your Phoenix server:
+Welcome to Gitstats. We need to go through the following ground work before we can git stats on people's Github!
+To start the Phoenix server:
 
-  * Install dependencies with `mix deps.get`
-  * Create and migrate your database with `mix ecto.setup`
-  * Install Node.js dependencies with `cd assets && npm install`
-  * Start Phoenix endpoint with `mix phx.server`
+  * Create `.env` and copy the variables from `config/localhost.env`. Make sure to replace `GITHUB_API_KEY` with valid API key in `.env` file only.
+  ```
+  cp config/localhost.env .env
+  ```
+  * Run the local start script which takes care of installing dependencies and starting the server for you!
+  ```
+  ./bin/local_start.sh
+  ```
 
 Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
