@@ -4,7 +4,7 @@ defmodule GithubstatsWeb.PageController do
   alias Githubstats.Github.HTTPClient
 
   def index(conn, params) do
-    render(conn, "index.html", watches: [], count: '')
+    render(conn, "index.html", watches: [], count: 0)
   end
 
   def update(conn, %{"github" => %{"username" => username}}) do
@@ -16,12 +16,12 @@ defmodule GithubstatsWeb.PageController do
       {:error, [%{"message" => message}]} ->
         conn
         |> put_flash(:error, message)
-        |> render("index.html", watches: [], count: '')
+        |> render("index.html", watches: [], count: 0)
 
       _ ->
         conn
         |> put_flash(:error, "Something went wrong. Please try again later.")
-        |> render("index.html", watches: [], count: '')
+        |> render("index.html", watches: [], count: 0)
     end
   end
 end

@@ -12,7 +12,9 @@
   <%end%>
 </section>
 
-<h1> They are keeping an eye on <%= @count %> repositories: </h1>
+<%= if @count > 0 do %>
+  <h1> They are keeping an eye on <%= @count %> repositories: </h1>
+<%end%>
 
 <%= if @watches do %>
   <%= for watching <- @watches do %>
