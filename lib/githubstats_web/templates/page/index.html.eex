@@ -1,6 +1,15 @@
 <section class="phx-hero">
-  <h1><%= gettext "Welcome to %{name}!", name: "Phoenix" %></h1>
-  <p>A productive web framework that<br/>does not compromise speed or maintainability.</p>
+  <h1><%= gettext "Who are they watching?!?", name: "Phoenix" %></h1>
+  <%= form_for @conn, Routes.page_path(@conn, :index), [as: :github], fn f -> %>
+    <div class="field ui fluid left icon input">
+
+      <label>
+    GitHub Username: <%= text_input f, :username, [placeholder: "GitHub Username"] %>
+        <i class="user icon"></i>
+      </label>  
+    </div>
+    <%= submit "Search", [class: "fluid ui blue button", id: "sign-in-submit"] %>
+  <%end%>
 </section>
 
 <section class="row">
@@ -18,6 +27,9 @@
       </li>
     </ul>
   </article>
+
+  
+
   <article class="column">
     <h2>Help</h2>
     <ul>
