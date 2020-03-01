@@ -80,7 +80,11 @@ defmodule Githubstats.Github.HTTPClient do
     case post(%{query: query}) do
       %{status_code: 200, body: body} ->
         case Poison.decode!(body) do
-          %{"data" => %{"user" => %{"avatarUrl" => image_url, "watching" => %{"nodes" => watches}}}} ->
+          %{
+            "data" => %{
+              "user" => %{"avatarUrl" => image_url, "watching" => %{"nodes" => watches}}
+            }
+          } ->
             {:ok, %{"watches" => watches, "image_url" => image_url}}
 
           %{"errors" => errors} ->
